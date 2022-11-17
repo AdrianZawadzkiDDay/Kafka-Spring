@@ -1,0 +1,32 @@
+Lista sieci
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --list --zookeeper zookeeper:2181
+Stworzenie topic
+docker run --net=course-kafka-spring-producer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --create --topic test-topic-60 --partitions 2 --replication-factor 2
+Stworzenie topic & min,insync.replicas
+docker run --net=course-kafka-spring-producer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --create --topic test-topic-71 --partitions 1 --replication-factor 3 --config min.insync.replicas=3
+Lista topików
+docker run --net=course-kafka-spring-producer_default  --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --list --zookeeper zookeeper:2181
+Opis topika
+docker run --net=course-kafka-spring-producer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --topic test-topic-71 --describe
+Producent wiadomości
+docker run --net=course-kafka-spring-producer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-console-producer --broker-list broker3:19093 --topic test-topic-72
+Konsument wiadomości
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-console-consumer --bootstrap-server broker3:19093 --topic test-topic-30 --from-beginning --group group-3
+
+
+------
+Z kursu:
+Lista sieci
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --list --zookeeper zookeeper:2181
+Stworzenie topic
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --create --topic test-topic-60 --partitions 2 --replication-factor 2
+Stworzenie topic & min,insync.replicas
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --create --topic test-topic-70 --partitions 1 --replication-factor 3 --config min.insync.replicas=3
+Lista topików
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --list --zookeeper zookeeper:2181
+Opis topika
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-topics --zookeeper zookeeper:2181 --topic test-topic-10 --describe
+Producent wiadomości
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-console-producer --broker-list broker3:19093 --topic test-topic-100
+Konsument wiadomości
+docker run --net=kafkaspringproducer_default --rm -i -t confluentinc/cp-kafka:5.3.0 kafka-console-consumer --bootstrap-server broker3:19093 --topic test-topic-30 --from-beginning --group group-3
